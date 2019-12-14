@@ -1,0 +1,14 @@
+{
+  "name": "elkjs_microservice_app",
+  "version": "1.0.0",
+  "description": "elkjs as a service on Docker",
+  "author": "Jürgen Key <jkey@arcor.de>",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.16.1",
+    "elkjs": "^0.5.1"
+  }
+}

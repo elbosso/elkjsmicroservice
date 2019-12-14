@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  elkjsmicroservice:
+    build:
+      context: ./ # Local
+    #      context: https://github.com/elbosso/generator-microservices.git # Build from Github
+    container_name: elkjsmicroservice
+    hostname: elkjsmicroservice
+    ports:
+      - 7070:7070
+    restart: always
+#    labels:
+#      - "traefik.backend=generator-microservices"
+#      - "traefik.enable=true"
+#      - "traefik.frontend.rule=Host:generator-microservices.docker.lab"
+#      - "traefik.port=7000"
+#      - "traefik.docker.network=traefik_proxy"
+#    networks:
+#      - traefik_proxy
+
+#networks:
+#  traefik_proxy:
+#    external:
+#      name: traefik_proxy
