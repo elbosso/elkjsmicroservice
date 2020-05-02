@@ -45,6 +45,11 @@
 }
 			</pre>
 			</div>
+            <p>This request can be sent using a HTTP POST request containing the JSON in
+                the body of said request having the correct mime-type:</p>
+            <div class="w3-panel w3-leftbar w3-sand w3-tiny w3-mono">curl -H "Content-Type: application/json" --data-binary '@&lt;graph&gt;.json' http://&lt;host&gt;:&lt;port&gt;/ &gt;&lt;layouted_graph&gt;.json</div>
+			<p>The file &lt;layouted_graph&gt;.json contains the result. Alternatively, you can just paste some JSON into the text box
+on the right and press "Layout" to see the service in action - the result is sent back as raw JSON...</p> 
         </div>
     </div>
 
