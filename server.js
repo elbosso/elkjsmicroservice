@@ -34,8 +34,8 @@ app.post('/', (req, res) => {
   else if (req.is('application/x-www-form-urlencoded'))
   {
     console.log('urlencoded');
-    console.log(req.body.jsonGraph);
-    elk.layout(req.body.jsonGraph)
+    console.log(JSON.parse(req.body.jsonGraph));
+    elk.layout(JSON.parse(req.body.jsonGraph))
      .then(function(g) {
        res.json(g);//res.send(JSON.stringify(g, null, " "));
     })
