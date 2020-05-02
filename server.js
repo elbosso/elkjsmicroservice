@@ -20,7 +20,9 @@ app.post('/', (req, res) => {
   if (req.is('multipart/form-data'))
   {
     console.log('multipart');
+    console.log(req.param);
     console.log(req.param.jsonGraph);
+    console.log(req.body.jsonGraph);
     elk.layout(req.param.jsonGraph)
      .then(function(g) {
        res.json(g);//res.send(JSON.stringify(g, null, " "));
