@@ -19,21 +19,10 @@ const elk = new ELK()
 app.post('/', (req, res) => {
   if (req.is('multipart/form-data'))
   {
-    console.log('multipart');
-    console.log(req.param);
-    console.log(req.param.jsonGraph);
-    console.log(req.body.jsonGraph);
-    elk.layout(req.param.jsonGraph)
-     .then(function(g) {
-       res.json(g);//res.send(JSON.stringify(g, null, " "));
-    })
-      .catch(function(g) {
-      res.status(500).send(g)
-    })
+    res.status(500).send('not implementes yet!')
   }
   else if (req.is('application/x-www-form-urlencoded'))
   {
-    console.log('urlencoded');
     console.log(JSON.parse(req.body.jsonGraph));
     elk.layout(JSON.parse(req.body.jsonGraph))
      .then(function(g) {
