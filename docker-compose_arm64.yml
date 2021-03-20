@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  elkjsmicroservice:
+    build:
+      context: ./ # Local
+      dockerfile: Dockerfile_arm64
+    #      context: https://github.com/elbosso/generator-microservices.git # Build from Github
+    container_name: elkjsmicroservice
+    hostname: elkjsmicroservice
+#    ports:
+#      - 7070:7070
+    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.elkjsmicroservice.rule=Host(`elkjsmicroservice.pi-docker.lab`)"
+      - "traefik.http.services.elkjsmicroservice.loadbalancer.server.port=7070"
+      - "traefik.docker.network=pi_traefik_proxy"
+    networks:
+      - traefik_proxy
+
+networks:
+  traefik_proxy:
+    external:
+      name: pi_traefik_proxy
