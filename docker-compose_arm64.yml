@@ -13,8 +13,14 @@ services:
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
+      - "traefik.http.routers.elkjsmicroservice-http.entrypoints=http"
+      - "traefik.http.routers.elkjsmicroservice-http.rule=Host(`elkjsmicroservice.pi-docker.lab`)"
+      - "traefik.http.routers.elkjsmicroservice-http.middlewares=elkjsmicroservice-https"
+      - "traefik.http.services.elkjsmicroservice-http.loadbalancer.server.port=7070"
+      - "traefik.http.middlewares.elkjsmicroservice-https.redirectscheme.scheme=https"
+      - "traefik.http.routers.elkjsmicroservice.entrypoints=https"
       - "traefik.http.routers.elkjsmicroservice.rule=Host(`elkjsmicroservice.pi-docker.lab`)"
-      - "traefik.http.services.elkjsmicroservice.loadbalancer.server.port=7070"
+      - "traefik.http.routers.elkjsmicroservice.tls=true"
       - "traefik.docker.network=pi_traefik_proxy"
     networks:
       - traefik_proxy
